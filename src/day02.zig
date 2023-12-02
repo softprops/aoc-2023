@@ -26,8 +26,8 @@ fn part1(input: []const u8) !i32 {
             var cubes = std.mem.split(u8, s, ", ");
             while (cubes.next()) |c| {
                 var tally = std.mem.split(u8, c, " ");
-                var count = try std.fmt.parseInt(i32, tally.next().?, 10);
-                var color = tally.next().?;
+                const count = try std.fmt.parseInt(i32, tally.next().?, 10);
+                const color = tally.next().?;
                 if (count > CONFIG.get(color).?) {
                     possible = false;
                 }
@@ -71,7 +71,6 @@ fn part2(input: []const u8) !i32 {
                 }
             }
         }
-        //std.debug.print("game {d} is possible\n", .{id});
         sum +%= (red * blue * green);
     }
     return sum;
